@@ -1,0 +1,44 @@
+.container > div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    grid-gap: 20px;
+}
+
+.color > p {
+    width: max-content;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.color .background {
+    width: 100%;
+    height: 100px;
+    background-color: #ABC38B;
+}
+
+.color .info p {
+    margin: 5px 0px;
+}
+
+.color {
+    position: relative;
+}
+
+.color img {
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    display: none;
+}
+
+.color:hover img {
+    display: block;
+}
+
+.add {
+    height: 100px;
+    margin-top: 52px;
+    background-color: #eaeaea;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
