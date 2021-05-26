@@ -3,7 +3,6 @@ import { useMutation, useQuery, useSubscription } from "@apollo/client";
 import Color from "./Color";
 import styles from './styles/Colors.module.css';
 import addIcon from '../assets/add.png';
-import { client, persistor } from "../apollo";
 import { GET_ALL_COLORS_QUERY } from "../utils/graphql/queries";
 import { CREATE_COLOR_MUTATION } from "../utils/graphql/mutations";
 import { SUBSCRIBE_COLOR_ADDED } from '../utils/graphql/subscriptions';
@@ -13,11 +12,7 @@ export default function Colors() {
 
     const { data: queryData, queryError, loading: queryLoading } = useQuery(GET_ALL_COLORS_QUERY);
     
-    const [addColor, { loading: mutationLoading }] = useMutation(CREATE_COLOR_MUTATION, {
-        onCompleted: () => {
-            // persistor.persist();
-        }
-    });
+    const [addColor, { loading: mutationLoading }] = useMutation(CREATE_COLOR_MUTATION);
 
     const { data: subscriptionData, loading: subscriptionLoading } = useSubscription(SUBSCRIBE_COLOR_ADDED, {
         update: (cache) => {
