@@ -1,8 +1,8 @@
 import { ApolloClient, createHttpLink, InMemoryCache, split } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { persistCache } from 'apollo-cache-persist';
 import { WebSocketLink } from 'apollo-link-ws';
-import { persistCache } from 'apollo-cache-persist'
-import { persistCacheSync, LocalStorageWrapper } from 'apollo3-cache-persist';
+// import { persistCacheSync, LocalStorageWrapper } from 'apollo3-cache-persist';
 
 const APOLLO_URI = process.env.REACT_APP_APOLLO_URI;
 const WSS_URI = process.env.REACT_APP_WSS_URI;
@@ -42,10 +42,15 @@ const link = split(
 
 const cache = new InMemoryCache();
 
-persistCacheSync({
+// persistCacheSync({
+//     cache,
+//     storage: new LocalStorageWrapper(window.localStorage),
+// });
+
+persistCache({
     cache,
-    storage: new LocalStorageWrapper(window.localStorage),
-});
+    storage: window.localStorage
+})
 
 export const client = new ApolloClient({
     link,

@@ -22,20 +22,23 @@
     position: relative;
 }
 
-.color img {
+.color button {
     position: absolute;
-    top: 50px;
+    padding: 0;
+    top: 30px;
     right: 0px;
     display: none;
+    background: none;
+    border: none;
 }
 
-.color:hover img {
+.color:hover button {
     display: block;
 }
 
 .add {
     height: 100px;
-    margin-top: 52px;
+    margin-top: 53px;
     background-color: #eaeaea;
     display: flex;
     justify-content: center;
